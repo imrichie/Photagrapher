@@ -22,6 +22,5 @@ class CurrentLocationViewController: UIViewController {
   
   // MARK: - Actions
   @IBAction func getLocation() {
-    // TODO: Add location location
   }
 }

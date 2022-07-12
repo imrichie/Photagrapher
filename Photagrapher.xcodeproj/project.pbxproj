@@ -62,8 +62,8 @@
 				1387F8722878A8AC0084A835 /* SceneDelegate.swift */,
 				1387F8742878A8AC0084A835 /* CurrentLocationViewController.swift */,
 				1387F8762878A8AC0084A835 /* Main.storyboard */,
-				1387F87C2878A8AD0084A835 /* Assets.xcassets */,
 				1387F87E2878A8AD0084A835 /* LaunchScreen.storyboard */,
+				1387F87C2878A8AD0084A835 /* Assets.xcassets */,
 				1387F8812878A8AD0084A835 /* Info.plist */,
 				1387F8792878A8AC0084A835 /* Photagrapher.xcdatamodeld */,
 			);
