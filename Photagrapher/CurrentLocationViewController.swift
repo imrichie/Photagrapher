@@ -27,11 +27,25 @@ class CurrentLocationViewController: UIViewController {
   // MARK: - Actions
   @IBAction func getLocation() {
     locationManager.delegate = self
+    let authStatus = locationManager.authorizationStatus
+    if authStatus == CLAuthorizationStatus.notDetermined {
+      locationManager.requestWhenInUseAuthorization()
+    }
+    print(">>> AUTH STATUS: \(authStatus)")
     locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
     locationManager.startUpdatingLocation()
   }
 }
 
+// MARK: - Core Location delegate objects
 extension CurrentLocationViewController: CLLocationManagerDelegate {
+  func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    if let newLocation = locations.last {
+      print(">>> LOCATION: \(newLocation)")
+    }
+  }
   
+  func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+    print(">>> LOCATION ERROR: \(error.localizedDescription)")
+  }
 }
