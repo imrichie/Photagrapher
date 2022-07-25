@@ -54,37 +54,70 @@ class CurrentLocationViewController: UIViewController {
   }
   
   func updateLabels() {
-    guard let location = location else {
+    if let location = location {
+      latitudeLabel.text = String(format: "%.8f", location.coordinate.latitude)
+      longitudeLabel.text = String(format: "%.8f", location.coordinate.longitude)
+      tagButton.isHidden = false
+      messageLabel.text = ""
+      // Address
+      if let placemark = placemark {
+        addressLabel.text = formatAddress(from: placemark)
+      } else if isPerformingGeocode {
+        addressLabel.text = "Searching for Address..."
+      } else if lastGeocodingError != nil {
+        addressLabel.text = "Error Finding Address"
+      } else {
+        addressLabel.text = "No Address Found"
+      }
+    } else {
       latitudeLabel.text = ""
       longitudeLabel.text = ""
       addressLabel.text = ""
       tagButton.isHidden = true
-      
-      var statusMessage: String
+      // Message
+      let statusMessage: String
       if let error = lastLocationError as NSError? {
         if error.domain == kCLErrorDomain && error.code == CLError.denied.rawValue {
           statusMessage = "Location Services Disabled"
         } else {
-          statusMessage = "Error receiving location"
+          statusMessage = "Error Getting Location"
         }
-      } else if (!CLLocationManager.locationServicesEnabled()) {
-        statusMessage = "Location Serviecs Disabled"
+      } else if !CLLocationManager.locationServicesEnabled() {
+        statusMessage = "Location Services Disabled"
       } else if isUpdating {
         statusMessage = "Searching..."
-        print("Searching for location...")
       } else {
         statusMessage = "Tap 'Get My Location' to Start"
       }
       messageLabel.text = statusMessage
-      configureGetButton()
-      return
     }
-
-    latitudeLabel.text = String(format: "%.8f", location.coordinate.latitude)
-    longitudeLabel.text = String(format: "%.8f", location.coordinate.longitude)
-    tagButton.isHidden = false
-    messageLabel.text = ""
     configureGetButton()
+  }
+  
+  func formatAddress(from: CLPlacemark) -> String {
+    var line1 = ""
+    if let tmp = placemark?.subThoroughfare {
+      line1 += tmp + " "
+    }
+    
+    if let tmp = placemark?.thoroughfare {
+      line1 += tmp
+    }
+    
+    var line2 = ""
+    if let tmp = placemark?.locality {
+      line2 += tmp + " "
+    }
+    
+    if let tmp = placemark?.administrativeArea {
+      line2 += tmp + " "
+    }
+    
+    if let tmp = placemark?.postalCode {
+      line2 += tmp
+    }
+    
+    return line1 + "\n" + line2
   }
   
   func startLocationManager() {
@@ -98,7 +131,6 @@ class CurrentLocationViewController: UIViewController {
   
   func stopLocationManager() {
     if isUpdating {
-      print("Stopping search for location...")
       locationManager.stopUpdatingLocation()
       locationManager.delegate = nil
       isUpdating = false
@@ -111,7 +143,11 @@ class CurrentLocationViewController: UIViewController {
   }
   
   func configureGetButton() {
-    isUpdating ? getButton.setTitle("Stop Updating", for: .normal) : getButton.setTitle("Get My Location", for: .normal)
+    if isUpdating {
+      getButton.setTitle("Stop", for: .normal)
+    } else {
+      getButton.setTitle("Get My Location", for: .normal)
+    }
   }
   
   // MARK: - Actions
@@ -126,6 +162,8 @@ class CurrentLocationViewController: UIViewController {
     }
     
     if isUpdating {
+      placemark = nil
+      lastGeocodingError = nil
       stopLocationManager()
     } else {
       location = nil
@@ -140,7 +178,6 @@ class CurrentLocationViewController: UIViewController {
 extension CurrentLocationViewController: CLLocationManagerDelegate {
   func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
     guard let newLocation = locations.last else { return }
-    print("LOCATION: \(newLocation)")
     
     // Times are too close to compare
     if newLocation.timestamp.timeIntervalSinceNow < -5 {
@@ -159,22 +196,21 @@ extension CurrentLocationViewController: CLLocationManagerDelegate {
       
       // if new lcoation is good enough to our conditions stop the location updates
       if newLocation.horizontalAccuracy <= locationManager.desiredAccuracy {
-        print(">>> We're Done")
         stopLocationManager()
       }
       updateLabels()
       
       if !isPerformingGeocode {
-        print(">>> Performing Geocode operations")
         isPerformingGeocode = true
         geocoder.reverseGeocodeLocation(newLocation) { placemark, error in
-          if let error = error {
-            print(">>> GEOCODING ERROR: \(error.localizedDescription)")
+          self.lastGeocodingError = error
+          if error == nil, let places = placemark, !places.isEmpty {
+            self.placemark = places.last!
+          } else {
+            self.placemark = nil
           }
-          
-          if let placemark = placemark {
-            print("PLACEMARK: \(placemark)")
-          }
+          self.isPerformingGeocode = false
+          self.updateLabels()
         }
       }
     }
