@@ -14,6 +14,7 @@
 		1387F87B2878A8AC0084A835 /* Photagrapher.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1387F8792878A8AC0084A835 /* Photagrapher.xcdatamodeld */; };
 		1387F87D2878A8AD0084A835 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1387F87C2878A8AD0084A835 /* Assets.xcassets */; };
 		1387F8802878A8AD0084A835 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1387F87E2878A8AD0084A835 /* LaunchScreen.storyboard */; };
+		13F007A8289358F1004C23F3 /* LocationDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F007A7289358F1004C23F3 /* LocationDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		1387F87C2878A8AD0084A835 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1387F87F2878A8AD0084A835 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1387F8812878A8AD0084A835 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		13F007A7289358F1004C23F3 /* LocationDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 				1387F8702878A8AC0084A835 /* AppDelegate.swift */,
 				1387F8722878A8AC0084A835 /* SceneDelegate.swift */,
 				1387F8742878A8AC0084A835 /* CurrentLocationViewController.swift */,
+				13F007A7289358F1004C23F3 /* LocationDetailViewController.swift */,
 				1387F8762878A8AC0084A835 /* Main.storyboard */,
 				1387F87E2878A8AD0084A835 /* LaunchScreen.storyboard */,
 				1387F87C2878A8AD0084A835 /* Assets.xcassets */,
@@ -145,6 +148,7 @@
 				1387F8712878A8AC0084A835 /* AppDelegate.swift in Sources */,
 				1387F87B2878A8AC0084A835 /* Photagrapher.xcdatamodeld in Sources */,
 				1387F8732878A8AC0084A835 /* SceneDelegate.swift in Sources */,
+				13F007A8289358F1004C23F3 /* LocationDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

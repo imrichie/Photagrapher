@@ -37,6 +37,16 @@ class CurrentLocationViewController: UIViewController {
     updateLabels()
   }
   
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(true)
+    navigationController?.isNavigationBarHidden = true
+  }
+  
+  override func viewWillDisappear(_ animated: Bool) {
+    super.viewWillDisappear(true)
+    navigationController?.isNavigationBarHidden = false
+  }
+  
   // MARK: - Private functions
   func showLocationServicesDisabledAlert() {
     let alert = UIAlertController(
