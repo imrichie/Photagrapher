@@ -67,7 +67,7 @@
                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <segue destination="mwP-YY-EuZ" kind="show" id="c8V-RK-Tc9"/>
+                                    <segue destination="mwP-YY-EuZ" kind="show" identifier="TagLocation" id="c8V-RK-Tc9"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9te-B7-ol0">
@@ -277,7 +277,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="343" height="43.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ni0-em-8uk">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ni0-em-8uk">
                                                     <rect key="frame" x="16" y="14.333333333333336" width="47" height="15"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
@@ -343,6 +343,14 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="addressLabel" destination="Opf-sd-twY" id="beM-36-QEC"/>
+                        <outlet property="categoryLabel" destination="LSx-ce-ruJ" id="RoT-Ub-yHD"/>
+                        <outlet property="dateLabel" destination="oXG-7m-aWH" id="b5l-kJ-DgN"/>
+                        <outlet property="descriptionTextView" destination="UrP-PY-vfR" id="u43-C2-PmD"/>
+                        <outlet property="latitudeLabel" destination="uZ5-1M-E5w" id="xrb-AF-L1D"/>
+                        <outlet property="longitutudeLabel" destination="7kE-Ze-qCp" id="vHR-dB-LS2"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V15-d4-NvW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
