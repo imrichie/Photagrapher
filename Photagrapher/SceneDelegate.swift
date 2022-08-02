@@ -2,7 +2,7 @@
 //  SceneDelegate.swift
 //  Photagrapher
 //
-//  Created by Richie Flores on 7/8/22.
+//  Created by AppLimited Software LLC on 7/8/22.
 //
 
 import UIKit

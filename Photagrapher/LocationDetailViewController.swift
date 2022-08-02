@@ -3,7 +3,7 @@
 //  Photagrapher
 //
 //  Created by Richie Flores on 7/28/22.
-//  Property of AppLimited L.L.C.
+//  Property of AppLimited Software LLC
 //
 
 import UIKit
@@ -29,11 +29,13 @@ class LocationDetailViewController: UITableViewController {
   var coordinates = CLLocationCoordinate2D(latitude: 0, longitude: 0)
   var placemark: CLPlacemark?
   
+  var categoryName: String = "No Category"
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     
     descriptionTextView.text = ""
-    categoryLabel.text = ""
+    categoryLabel.text = categoryName
     
     latitudeLabel.text = String(format: "%.8f", coordinates.latitude)
     longitutudeLabel.text = String(format: "%.8f", coordinates.longitude)
@@ -62,11 +64,11 @@ class LocationDetailViewController: UITableViewController {
     }
     
     if let temp = placemark?.administrativeArea {
-      text += temp + " "
+      text += temp + ", "
     }
     
     if let temp = placemark?.postalCode {
-      text += temp + ", "
+      text += temp + " "
     }
     
     if let temp = placemark?.country {
@@ -79,6 +81,19 @@ class LocationDetailViewController: UITableViewController {
     return dateFormatter.string(from: date)
   }
   
+  // MARK: - Navigation
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if segue.identifier == "PickCategory" {
+      let controller = segue.destination as! CategoryPickerViewController
+      controller.selectedCategoryName = categoryName
+    }
+  }
+  
+  @IBAction func didPickCategory(unwindSegue: UIStoryboardSegue) {
+    let controller = unwindSegue.source as! CategoryPickerViewController
+    categoryName = controller.selectedCategoryName
+    categoryLabel.text = categoryName
+  }
   
   // MARK: - Actions
   @IBAction func done() {
@@ -92,5 +107,17 @@ class LocationDetailViewController: UITableViewController {
   // MARK: - Table View Delegates
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     tableView.deselectRow(at: indexPath, animated: true)
+    
+    if indexPath.section == 0 && indexPath.row == 0 {
+      descriptionTextView.becomeFirstResponder()
+    }
+  }
+  
+  override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+    if indexPath.section == 0 || indexPath.section == 1 {
+      return indexPath
+    } else {
+      return nil
+    }
   }
 }
