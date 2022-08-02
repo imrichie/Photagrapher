@@ -16,6 +16,7 @@
 		1387F8802878A8AD0084A835 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1387F87E2878A8AD0084A835 /* LaunchScreen.storyboard */; };
 		13BA50B92898E1FC00C8C7EC /* Location+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BA50B72898E1FC00C8C7EC /* Location+CoreDataClass.swift */; };
 		13BA50BA2898E1FC00C8C7EC /* Location+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BA50B82898E1FC00C8C7EC /* Location+CoreDataProperties.swift */; };
+		13BA50BF2898EF1900C8C7EC /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BA50BE2898EF1900C8C7EC /* Functions.swift */; };
 		13F007A8289358F1004C23F3 /* LocationDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F007A7289358F1004C23F3 /* LocationDetailViewController.swift */; };
 		13F007AA2893A6A1004C23F3 /* CategoryPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F007A92893A6A1004C23F3 /* CategoryPickerViewController.swift */; };
 /* End PBXBuildFile section */
@@ -32,6 +33,7 @@
 		1387F8812878A8AD0084A835 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		13BA50B72898E1FC00C8C7EC /* Location+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Location+CoreDataClass.swift"; sourceTree = "<group>"; };
 		13BA50B82898E1FC00C8C7EC /* Location+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Location+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		13BA50BE2898EF1900C8C7EC /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		13F007A7289358F1004C23F3 /* LocationDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailViewController.swift; sourceTree = "<group>"; };
 		13F007A92893A6A1004C23F3 /* CategoryPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryPickerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -71,6 +73,7 @@
 				13BA50BB2898E91100C8C7EC /* Model */,
 				13BA50BC2898E92A00C8C7EC /* Controllers */,
 				13BA50BD2898E94F00C8C7EC /* View */,
+				13BA50C02898EF3000C8C7EC /* Utilities */,
 				1387F87C2878A8AD0084A835 /* Assets.xcassets */,
 				1387F8812878A8AD0084A835 /* Info.plist */,
 			);
@@ -104,6 +107,14 @@
 				1387F87E2878A8AD0084A835 /* LaunchScreen.storyboard */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		13BA50C02898EF3000C8C7EC /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				13BA50BE2898EF1900C8C7EC /* Functions.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -183,6 +194,7 @@
 				1387F8752878A8AC0084A835 /* CurrentLocationViewController.swift in Sources */,
 				1387F8712878A8AC0084A835 /* AppDelegate.swift in Sources */,
 				1387F87B2878A8AC0084A835 /* Photagrapher.xcdatamodeld in Sources */,
+				13BA50BF2898EF1900C8C7EC /* Functions.swift in Sources */,
 				1387F8732878A8AC0084A835 /* SceneDelegate.swift in Sources */,
 				13F007A8289358F1004C23F3 /* LocationDetailViewController.swift in Sources */,
 			);
