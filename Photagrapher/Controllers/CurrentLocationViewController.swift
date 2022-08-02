@@ -7,6 +7,7 @@
 
 import UIKit
 import CoreLocation
+import CoreData
 
 class CurrentLocationViewController: UIViewController {
   
@@ -17,7 +18,7 @@ class CurrentLocationViewController: UIViewController {
   @IBOutlet weak var tagButton:       UIButton!
   @IBOutlet weak var getButton:       UIButton!
   
-  // Core Location Managers
+  // Core Location Properties
   let locationManager =     CLLocationManager()
   let geocoder =            CLGeocoder()
   
@@ -29,6 +30,9 @@ class CurrentLocationViewController: UIViewController {
   
   var isUpdating =          false
   var isPerformingGeocode = false
+  
+  // Core Data Properties
+  var managedObjectContext: NSManagedObjectContext!
   
   
   override func viewDidLoad() {
@@ -191,6 +195,7 @@ class CurrentLocationViewController: UIViewController {
       let controller = segue.destination as! LocationDetailViewController
       controller.coordinates = location.coordinate
       controller.placemark = placemark
+      controller.managedObjectContext = managedObjectContext
     }
   }
 }
