@@ -15,22 +15,12 @@ class LocationsViewController: UITableViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     locationManager.fetchData()
-  }
+    registerTableViewCells()
+  }  
   
-  func configurePlacemark(_ placemark: CLPlacemark) -> String {
-    var text = ""
-    if let temp = placemark.subThoroughfare {
-      text += temp + " "
-    }
-    
-    if let temp = placemark.thoroughfare {
-      text += temp + ", "
-    }
-    
-    if let temp = placemark.locality {
-      text += temp
-    }
-    return text
+  func registerTableViewCells() {
+    let locationCell  = UINib(nibName: Constants.CellNames.locationCellNibName, bundle: nil)
+    tableView.register(locationCell, forCellReuseIdentifier: Constants.CellNames.locationCell)
   }
   
   // MARK: - Table View
@@ -40,19 +30,10 @@ class LocationsViewController: UITableViewController {
   }
   
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: Constants.CellNames.locationCell, for: indexPath)
-    
-    let descriptionLabel = cell.viewWithTag(100) as! UILabel
-    let addressLabel = cell.viewWithTag(101) as! UILabel
+    let locationCell = tableView.dequeueReusableCell(withIdentifier: Constants.CellNames.locationCell, for: indexPath) as! LocationCell
     let location = locationManager.locations[indexPath.row]
+    locationCell.configure(for: location)
     
-    descriptionLabel.text = location.category
-    if let placemark = location.placemark {
-      addressLabel.text = configurePlacemark(placemark)
-    } else {
-      addressLabel.text = ""
-    }
-    
-    return cell 
+    return locationCell
   }
 }

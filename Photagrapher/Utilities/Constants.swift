@@ -10,7 +10,9 @@ import Foundation
 struct Constants {
   // Constants for Cell Names
   struct CellNames {
+    static let locationCellNibName: String = "LocationCell"
     static let locationCell: String = "LocationCell"
+    static let defaultCell: String = "DefaultCell"
   }
   
   struct Entities {
