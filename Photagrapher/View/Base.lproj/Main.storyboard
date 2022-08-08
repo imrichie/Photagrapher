@@ -442,18 +442,41 @@
         <!--Locations-->
         <scene sceneID="Pnt-2H-clh">
             <objects>
-                <tableViewController id="mCc-Wd-Sug" sceneMemberID="viewController">
+                <tableViewController id="mCc-Wd-Sug" customClass="LocationsViewController" customModule="Photagrapher" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="VhW-mp-ttJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="VFk-7z-W5h">
-                                <rect key="frame" x="0.0" y="44.666666030883789" width="375" height="43.666667938232422"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LocationCell" rowHeight="65" id="VFk-7z-W5h">
+                                <rect key="frame" x="0.0" y="44.666666030883789" width="375" height="65"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="VFk-7z-W5h" id="UJv-q3-xpn">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.666667938232422"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IeG-0n-esp">
+                                            <rect key="frame" x="16" y="39" width="343" height="15"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="100" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lRV-7O-0VG">
+                                            <rect key="frame" x="16" y="11" width="343" height="17"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="IeG-0n-esp" firstAttribute="trailing" secondItem="UJv-q3-xpn" secondAttribute="trailingMargin" id="QfO-Jt-G1C"/>
+                                        <constraint firstItem="lRV-7O-0VG" firstAttribute="top" secondItem="UJv-q3-xpn" secondAttribute="topMargin" id="SQD-03-UZt"/>
+                                        <constraint firstItem="IeG-0n-esp" firstAttribute="leading" secondItem="UJv-q3-xpn" secondAttribute="leadingMargin" id="VF4-q6-3EG"/>
+                                        <constraint firstItem="IeG-0n-esp" firstAttribute="top" secondItem="lRV-7O-0VG" secondAttribute="bottom" constant="11" id="g0q-bD-gIq"/>
+                                        <constraint firstItem="lRV-7O-0VG" firstAttribute="trailing" secondItem="UJv-q3-xpn" secondAttribute="trailingMargin" id="oao-8t-KGV"/>
+                                        <constraint firstItem="lRV-7O-0VG" firstAttribute="leading" secondItem="UJv-q3-xpn" secondAttribute="leadingMargin" id="vQ3-zY-SJB"/>
+                                        <constraint firstItem="IeG-0n-esp" firstAttribute="bottom" secondItem="UJv-q3-xpn" secondAttribute="bottomMargin" id="zkf-Ib-tUH"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
@@ -466,15 +489,15 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tpu-wu-ndI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="436" y="895"/>
+            <point key="canvasLocation" x="436" y="894.82758620689663"/>
         </scene>
         <!--Locations-->
         <scene sceneID="Ipg-f3-YsJ">
             <objects>
                 <navigationController id="k5g-Gd-6zM" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Locations" image="map" catalog="system" id="uAe-Qv-hmw"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="wdi-k9-M30">
-                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="wdi-k9-M30">
+                        <rect key="frame" x="0.0" y="44" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>

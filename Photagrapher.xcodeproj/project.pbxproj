@@ -18,6 +18,8 @@
 		13BA50BA2898E1FC00C8C7EC /* Location+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BA50B82898E1FC00C8C7EC /* Location+CoreDataProperties.swift */; };
 		13BA50BF2898EF1900C8C7EC /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BA50BE2898EF1900C8C7EC /* Utilities.swift */; };
 		13BA50C2289A32ED00C8C7EC /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BA50C1289A32ED00C8C7EC /* Constants.swift */; };
+		13BA50C4289A3C0D00C8C7EC /* LocationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BA50C3289A3C0D00C8C7EC /* LocationsViewController.swift */; };
+		13CD19AB28A0958400F41CE8 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CD19AA28A0958400F41CE8 /* LocationManager.swift */; };
 		13F007A8289358F1004C23F3 /* LocationDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F007A7289358F1004C23F3 /* LocationDetailViewController.swift */; };
 		13F007AA2893A6A1004C23F3 /* CategoryPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F007A92893A6A1004C23F3 /* CategoryPickerViewController.swift */; };
 /* End PBXBuildFile section */
@@ -36,6 +38,8 @@
 		13BA50B82898E1FC00C8C7EC /* Location+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Location+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		13BA50BE2898EF1900C8C7EC /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		13BA50C1289A32ED00C8C7EC /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		13BA50C3289A3C0D00C8C7EC /* LocationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsViewController.swift; sourceTree = "<group>"; };
+		13CD19AA28A0958400F41CE8 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		13F007A7289358F1004C23F3 /* LocationDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailViewController.swift; sourceTree = "<group>"; };
 		13F007A92893A6A1004C23F3 /* CategoryPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryPickerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -87,6 +91,7 @@
 			children = (
 				13BA50B72898E1FC00C8C7EC /* Location+CoreDataClass.swift */,
 				13BA50B82898E1FC00C8C7EC /* Location+CoreDataProperties.swift */,
+				13CD19AA28A0958400F41CE8 /* LocationManager.swift */,
 				1387F8792878A8AC0084A835 /* Photagrapher.xcdatamodeld */,
 			);
 			path = Model;
@@ -98,6 +103,7 @@
 				1387F8742878A8AC0084A835 /* CurrentLocationViewController.swift */,
 				13F007A7289358F1004C23F3 /* LocationDetailViewController.swift */,
 				13F007A92893A6A1004C23F3 /* CategoryPickerViewController.swift */,
+				13BA50C3289A3C0D00C8C7EC /* LocationsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -195,9 +201,11 @@
 				13BA50B92898E1FC00C8C7EC /* Location+CoreDataClass.swift in Sources */,
 				13F007AA2893A6A1004C23F3 /* CategoryPickerViewController.swift in Sources */,
 				1387F8752878A8AC0084A835 /* CurrentLocationViewController.swift in Sources */,
+				13BA50C4289A3C0D00C8C7EC /* LocationsViewController.swift in Sources */,
 				1387F8712878A8AC0084A835 /* AppDelegate.swift in Sources */,
 				13BA50C2289A32ED00C8C7EC /* Constants.swift in Sources */,
 				1387F87B2878A8AC0084A835 /* Photagrapher.xcdatamodeld in Sources */,
+				13CD19AB28A0958400F41CE8 /* LocationManager.swift in Sources */,
 				13BA50BF2898EF1900C8C7EC /* Utilities.swift in Sources */,
 				1387F8732878A8AC0084A835 /* SceneDelegate.swift in Sources */,
 				13F007A8289358F1004C23F3 /* LocationDetailViewController.swift in Sources */,

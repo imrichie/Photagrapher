@@ -6,3 +6,14 @@
 //
 
 import Foundation
+
+struct Constants {
+  // Constants for Cell Names
+  struct CellNames {
+    static let locationCell: String = "LocationCell"
+  }
+  
+  struct Entities {
+    static let location: String = "Location"
+  }
+}

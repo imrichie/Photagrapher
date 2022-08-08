@@ -33,6 +33,8 @@ class LocationDetailViewController: UITableViewController {
   var categoryName: String = "No Category"
   var managedObjectContext: NSManagedObjectContext!
   
+  var date: Date = Date()
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     
@@ -47,7 +49,7 @@ class LocationDetailViewController: UITableViewController {
     } else {
       addressLabel.text = "No Address Found"
     }
-    dateLabel.text = format(date: Date())
+    dateLabel.text = format(date: date)
   }
   
   // MARK: - Private Methods
@@ -99,7 +101,24 @@ class LocationDetailViewController: UITableViewController {
   
   // MARK: - Actions
   @IBAction func done() {
-    navigationController?.popViewController(animated: true)
+    
+    // Initialize Location object and set properties
+    let location = Location(context: managedObjectContext)
+    location.longitude = coordinates.longitude
+    location.latitude = coordinates.latitude
+    location.locationDescription = descriptionTextView.text
+    location.category = categoryName
+    location.date = date
+    location.placemark = placemark
+    
+    // ask managedObjectContext to save to CoreData
+    do {
+      try managedObjectContext.save()
+      print(">>> Saved to Core Data")
+      navigationController?.popViewController(animated: true)
+    } catch {
+      fatalError(">>> ERROR: \(error)")
+    }
   }
   
   @IBAction func cancel() {
