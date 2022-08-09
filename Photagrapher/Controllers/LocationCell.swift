@@ -23,13 +23,13 @@ class LocationCell: UITableViewCell {
   // MARK: - Helper Methods
   func configure(for location: Location) {
 //    TODO: Uncomment to set descriptionLabel to be actual description
-//    if location.locationDescription.isEmpty {
-//      descriptionLabel.text = "(No Description)"
-//    } else {
-//      descriptionLabel.text = location.locationDescription
-//    }
+    if location.locationDescription.isEmpty {
+      descriptionLabel.text = "(No Description)"
+    } else {
+      descriptionLabel.text = location.locationDescription
+    }
     
-    descriptionLabel.text = location.category
+    //descriptionLabel.text = location.category
     if let placemark = location.placemark {
       var text = ""
       if let temp = placemark.subThoroughfare {
@@ -45,7 +45,7 @@ class LocationCell: UITableViewCell {
       }
       addressLabel.text = text
     } else {
-      addressLabel.text = "(No Address)"
+      addressLabel.text = String(format: "Lat: %.8f, Long: %.8f", location.latitude, location.longitude)
     }
   }
 }

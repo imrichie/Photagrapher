@@ -448,7 +448,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DefaultCell" rowHeight="65" id="VFk-7z-W5h">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LocationCell" rowHeight="65" id="VFk-7z-W5h" customClass="LocationCell" customModule="Photagrapher" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="44.666666030883789" width="375" height="65"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="VFk-7z-W5h" id="UJv-q3-xpn">
@@ -478,6 +478,9 @@
                                         <constraint firstItem="IeG-0n-esp" firstAttribute="bottom" secondItem="UJv-q3-xpn" secondAttribute="bottomMargin" id="zkf-Ib-tUH"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="mwP-YY-EuZ" kind="show" identifier="EditLocation" id="Rm5-PP-oYa"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -509,6 +512,9 @@
             <point key="canvasLocation" x="279" y="862"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="Rm5-PP-oYa"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="location.north.circle" catalog="system" width="128" height="121"/>
         <image name="map" catalog="system" width="128" height="110"/>

@@ -36,4 +36,17 @@ class LocationsViewController: UITableViewController {
     
     return locationCell
   }
+  
+  // MARK: - Navigation
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if segue.identifier == Constants.SegueNames.editLocation {
+      let controller = segue.destination as! LocationDetailViewController
+      controller.locationManager = locationManager
+      
+      if let indexPath = tableView.indexPath(for: sender as! LocationCell) {
+        let location = locationManager.locations[indexPath.row]
+        controller.locationToEdit = location
+      }
+    }
+  }
 }

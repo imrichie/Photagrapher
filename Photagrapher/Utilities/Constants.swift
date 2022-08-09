@@ -18,4 +18,8 @@ struct Constants {
   struct Entities {
     static let location: String = "Location"
   }
+  
+  struct SegueNames {
+    static let editLocation: String = "EditLocation"
+  }
 }

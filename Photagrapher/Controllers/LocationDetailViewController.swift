@@ -31,14 +31,17 @@ class LocationDetailViewController: UITableViewController {
   var placemark: CLPlacemark?
   
   var categoryName: String = "No Category"
-  var managedObjectContext: NSManagedObjectContext!
+  var locationManager: LocationManager!
   
   var date: Date = Date()
+  
+  var locationToEdit: Location?
+  var descriptionText: String = ""
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    descriptionTextView.text = ""
+    descriptionTextView.text = descriptionText
     categoryLabel.text = categoryName
     
     latitudeLabel.text = String(format: "%.8f", coordinates.latitude)
