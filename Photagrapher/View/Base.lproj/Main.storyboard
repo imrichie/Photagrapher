@@ -478,9 +478,6 @@
                                         <constraint firstItem="IeG-0n-esp" firstAttribute="bottom" secondItem="UJv-q3-xpn" secondAttribute="bottomMargin" id="zkf-Ib-tUH"/>
                                     </constraints>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="mwP-YY-EuZ" kind="show" identifier="EditLocation" id="Rm5-PP-oYa"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -489,6 +486,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Locations" id="oJV-NY-Sjt"/>
+                    <connections>
+                        <segue destination="mwP-YY-EuZ" kind="show" identifier="EditLocation" id="pfq-aS-0EW"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tpu-wu-ndI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -513,7 +513,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Rm5-PP-oYa"/>
+        <segue reference="pfq-aS-0EW"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="location.north.circle" catalog="system" width="128" height="121"/>

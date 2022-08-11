@@ -27,19 +27,36 @@ class LocationDetailViewController: UITableViewController {
   @IBOutlet var addressLabel: UILabel!
   @IBOutlet var dateLabel: UILabel!
   
+  
   var coordinates = CLLocationCoordinate2D(latitude: 0, longitude: 0)
   var placemark: CLPlacemark?
-  
   var categoryName: String = "No Category"
   var locationManager: LocationManager!
-  
   var date: Date = Date()
-  
-  var locationToEdit: Location?
   var descriptionText: String = ""
+  
+  // Core Data
+  var managedObjectContext: NSManagedObjectContext!
+  
+  // property observer
+  var locationToEdit: Location? {
+    didSet {
+      if let location = locationToEdit {
+        coordinates = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
+        placemark = location.placemark
+        categoryName = location.category
+        date = location.date
+        descriptionText = location.locationDescription
+      }
+    }
+  }
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    if let location = locationToEdit {
+      title = "Edit Location"
+    }
     
     descriptionTextView.text = descriptionText
     categoryLabel.text = categoryName

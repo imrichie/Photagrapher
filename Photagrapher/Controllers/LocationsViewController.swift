@@ -37,15 +37,18 @@ class LocationsViewController: UITableViewController {
     return locationCell
   }
   
+  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    performSegue(withIdentifier: Constants.SegueNames.editLocation, sender: self)
+    tableView.deselectRow(at: indexPath, animated: true)
+  }
+  
   // MARK: - Navigation
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if segue.identifier == Constants.SegueNames.editLocation {
       let controller = segue.destination as! LocationDetailViewController
-      controller.locationManager = locationManager
-      
-      if let indexPath = tableView.indexPath(for: sender as! LocationCell) {
-        let location = locationManager.locations[indexPath.row]
-        controller.locationToEdit = location
+      if let selectedRow = tableView.indexPathForSelectedRow?.row {
+        controller.locationManager = locationManager
+        controller.locationToEdit = locationManager.locations[selectedRow]
       }
     }
   }
