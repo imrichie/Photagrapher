@@ -18,4 +18,19 @@ class MapViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
   }
+  
+  // MARK: - Bar Button Actions
+  @IBAction func showUser(_ sender: Any) {
+    let region = MKCoordinateRegion(center: mapView.userLocation.coordinate, latitudinalMeters: 1000, longitudinalMeters: 1000)
+    mapView.setRegion(region, animated: true)
+  }
+  
+  @IBAction func showLocations(_ sender: Any) {
+    print(">>> Showing Locations...")
+  }
+  
+}
+
+extension MapViewController: MKMapViewDelegate {
+  
 }

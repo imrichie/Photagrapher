@@ -110,8 +110,8 @@
 				13F007A7289358F1004C23F3 /* LocationDetailViewController.swift */,
 				13F007A92893A6A1004C23F3 /* CategoryPickerViewController.swift */,
 				13BA50C3289A3C0D00C8C7EC /* LocationsViewController.swift */,
-				13CD19AC28A0BAB900F41CE8 /* LocationCell.swift */,
 				139226F628A78DD800F97BB8 /* MapViewController.swift */,
+				13CD19AC28A0BAB900F41CE8 /* LocationCell.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
