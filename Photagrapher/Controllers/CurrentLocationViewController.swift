@@ -31,8 +31,8 @@ class CurrentLocationViewController: UIViewController {
   var isUpdating =          false
   var isPerformingGeocode = false
   
-  // Core Data Properties
-  var managedObjectContext: NSManagedObjectContext!
+  // Data Store
+  var locationDataStore: LocationManager!
   
   
   override func viewDidLoad() {
@@ -195,7 +195,7 @@ class CurrentLocationViewController: UIViewController {
       let controller = segue.destination as! LocationDetailViewController
       controller.coordinates = location.coordinate
       controller.placemark = placemark
-      controller.managedObjectContext = managedObjectContext
+      controller.locationManager = locationDataStore
     }
   }
 }

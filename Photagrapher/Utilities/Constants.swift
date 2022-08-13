@@ -8,7 +8,11 @@
 import Foundation
 
 struct Constants {
-  // Constants for Cell Names
+  struct DataManager {
+    static let cacheName: String = "Locations"
+    static let sectionNameKeyPath: String = "category"
+  }
+  
   struct CellNames {
     static let locationCellNibName: String = "LocationCell"
     static let locationCell: String = "LocationCell"

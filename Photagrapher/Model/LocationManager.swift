@@ -10,17 +10,34 @@ import CoreData
 
 class LocationManager {
   var managedObjectContext: NSManagedObjectContext!
-  var locations = [Location]()
+  
+  lazy var resultsController: NSFetchedResultsController<Location> = {
+    let fetchRequest = NSFetchRequest<Location>(entityName: Constants.Entities.location)
+    let sort1 = NSSortDescriptor(key: "category", ascending: true)
+    let sort2 = NSSortDescriptor(key: "date", ascending: true)
+    fetchRequest.sortDescriptors = [sort1, sort2]
+    
+    fetchRequest.fetchBatchSize = 20
+    
+    let resultsController = NSFetchedResultsController(
+      fetchRequest: fetchRequest,
+      managedObjectContext: managedObjectContext,
+      sectionNameKeyPath: Constants.DataManager.sectionNameKeyPath,
+      cacheName: Constants.DataManager.cacheName)
+    
+    return resultsController
+  }()
+  
+  deinit {
+    resultsController.delegate = nil 
+  }
   
   func fetchData() {
-    let fetchRequest = NSFetchRequest<Location>(entityName: Constants.Entities.location)
-    let sortDescriptor = NSSortDescriptor(key: "date", ascending: true)
-    fetchRequest.sortDescriptors = [sortDescriptor]
-    
     do {
-      locations = try managedObjectContext.fetch(fetchRequest)
+      try resultsController.performFetch()
     } catch {
-      fatalError(">>> ERROR: \(error.localizedDescription)")
+      fatalError(">>> CORE DATA ERROR: \(error.localizedDescription)")
     }
   }
+  
 }

@@ -31,12 +31,11 @@ class LocationDetailViewController: UITableViewController {
   var coordinates = CLLocationCoordinate2D(latitude: 0, longitude: 0)
   var placemark: CLPlacemark?
   var categoryName: String = "No Category"
-  var locationManager: LocationManager!
   var date: Date = Date()
   var descriptionText: String = ""
   
   // Core Data
-  var managedObjectContext: NSManagedObjectContext!
+  var locationManager: LocationManager!
   
   // property observer
   var locationToEdit: Location? {
@@ -122,8 +121,16 @@ class LocationDetailViewController: UITableViewController {
   // MARK: - Actions
   @IBAction func done() {
     
-    // Initialize Location object and set properties
-    let location = Location(context: managedObjectContext)
+    let location: Location
+    if let locationToEdit = locationToEdit {
+      location = locationToEdit
+      print(">>> Location Edited!")
+    } else {
+      location = Location(context: locationManager.managedObjectContext)
+      print(">>> New Location Created!")
+    }
+    
+    // set properties
     location.longitude = coordinates.longitude
     location.latitude = coordinates.latitude
     location.locationDescription = descriptionTextView.text
@@ -133,7 +140,7 @@ class LocationDetailViewController: UITableViewController {
     
     // ask managedObjectContext to save to CoreData
     do {
-      try managedObjectContext.save()
+      try locationManager.managedObjectContext.save()
       print(">>> Saved to Core Data")
       navigationController?.popViewController(animated: true)
     } catch {

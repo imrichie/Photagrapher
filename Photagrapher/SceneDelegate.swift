@@ -16,15 +16,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
   // MARK: - Scene Lifecycle
   
   func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-    let tabController = window!.rootViewController as! UITabBarController
     let locationManager = LocationManager()
     locationManager.managedObjectContext = managedObjectContext
+    
+    let tabController = window!.rootViewController as! UITabBarController
     guard let tabViewControllers = tabController.viewControllers else { return }
     
     // FIRST TAB - Current Location
     var navController = tabViewControllers[0] as! UINavigationController
     let controller1 = navController.viewControllers.first as! CurrentLocationViewController
-    controller1.managedObjectContext = managedObjectContext
+    controller1.locationDataStore = locationManager
     
     // SECOND TAB - Locations VC
     navController = tabViewControllers[1] as! UINavigationController
