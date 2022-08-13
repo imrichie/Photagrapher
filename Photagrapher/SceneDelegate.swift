@@ -31,6 +31,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     navController = tabViewControllers[1] as! UINavigationController
     let controller2 = navController.viewControllers.first as! LocationsViewController
     controller2.locationManager = locationManager
+    
+    // THIRD TAB - Map VC
+    navController = tabViewControllers[2] as! UINavigationController
+    let controller3 = navController.viewControllers.first as! MapViewController
+    controller3.locationManager = locationManager
   }
   
   func sceneDidDisconnect(_ scene: UIScene) {

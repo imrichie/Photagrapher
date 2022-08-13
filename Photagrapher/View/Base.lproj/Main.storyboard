@@ -520,6 +520,9 @@
                         <barButtonItem key="leftBarButtonItem" title="Locations" id="L2G-iI-O27"/>
                         <barButtonItem key="rightBarButtonItem" title="User" id="BLP-lC-MXJ"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="mapView" destination="HA1-xE-eRL" id="LUQ-aY-lXd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C0e-Qp-4BM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
