@@ -38,6 +38,7 @@
 		1387F87F2878A8AD0084A835 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1387F8812878A8AD0084A835 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		139226F628A78DD800F97BB8 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		139226F828A8848800F97BB8 /* Photagrapher_V2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Photagrapher_V2.xcdatamodel; sourceTree = "<group>"; };
 		13BA50B72898E1FC00C8C7EC /* Location+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Location+CoreDataClass.swift"; sourceTree = "<group>"; };
 		13BA50B82898E1FC00C8C7EC /* Location+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Location+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		13BA50BE2898EF1900C8C7EC /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
@@ -447,9 +448,10 @@
 		1387F8792878A8AC0084A835 /* Photagrapher.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				139226F828A8848800F97BB8 /* Photagrapher_V2.xcdatamodel */,
 				1387F87A2878A8AC0084A835 /* Photagrapher.xcdatamodel */,
 			);
-			currentVersion = 1387F87A2878A8AC0084A835 /* Photagrapher.xcdatamodel */;
+			currentVersion = 139226F828A8848800F97BB8 /* Photagrapher_V2.xcdatamodel */;
 			path = Photagrapher.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

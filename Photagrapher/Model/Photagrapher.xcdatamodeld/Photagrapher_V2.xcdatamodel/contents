@@ -3,12 +3,13 @@
     <entity name="Location" representedClassName="Location" syncable="YES">
         <attribute name="category" attributeType="String"/>
         <attribute name="date" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="isFavorite" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="latitude" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="locationDescription" attributeType="String"/>
         <attribute name="longitude" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="placemark" optional="YES" attributeType="Transformable" valueTransformerName=""/>
     </entity>
     <elements>
-        <element name="Location" positionX="-63" positionY="-18" width="147.46875" height="133"/>
+        <element name="Location" positionX="-63" positionY="-18" width="147.46875" height="134"/>
     </elements>
 </model>

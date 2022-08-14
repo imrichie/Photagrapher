@@ -67,7 +67,7 @@ class LocationsViewController: UITableViewController {
     }
   }
   
-  // swipe to favorite
+  // Swipe Actions
   override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
     // Delete Action
     let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { action, view, handler in
@@ -85,6 +85,14 @@ class LocationsViewController: UITableViewController {
     // Favorite Action
     let favoriteAction = UIContextualAction(style: .normal, title: "Favorite") { action, view, handler in
       print(">>> Favorite Button Clicked")
+      let selectedLocation = self.locationManager.resultsController.object(at: indexPath)
+      selectedLocation.isFavorite.toggle()
+      
+      do {
+        try self.locationManager.managedObjectContext.save()
+      } catch {
+        fatalError(">>> CORE DATA - Favorites: \(error.localizedDescription)")
+      }
     }
     favoriteAction.image = UIImage(systemName: "star")
     favoriteAction.backgroundColor = .systemBlue
