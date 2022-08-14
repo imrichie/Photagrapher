@@ -67,6 +67,32 @@ class LocationsViewController: UITableViewController {
     }
   }
   
+  // swipe to favorite
+  override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+    // Delete Action
+    let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { action, view, handler in
+      print(">>> Deleting location...")
+      let location = self.locationManager.resultsController.object(at: indexPath)
+      self.locationManager.managedObjectContext.delete(location)
+      do {
+        try self.locationManager.managedObjectContext.save()
+      } catch {
+        fatalError(">>> CORE DATA ERROR - Deleting: \(error.localizedDescription)")
+      }
+    }
+    deleteAction.image = UIImage(systemName: "trash")
+    
+    // Favorite Action
+    let favoriteAction = UIContextualAction(style: .normal, title: "Favorite") { action, view, handler in
+      print(">>> Favorite Button Clicked")
+    }
+    favoriteAction.image = UIImage(systemName: "star")
+    favoriteAction.backgroundColor = .systemBlue
+    
+    let configuration = UISwipeActionsConfiguration(actions: [deleteAction, favoriteAction])
+    return configuration
+  }
+  
   // MARK: - Navigation
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if segue.identifier == Constants.SegueNames.editLocation {
@@ -96,7 +122,7 @@ extension LocationsViewController: NSFetchedResultsControllerDelegate {
           print(">>> NSFetchedResultsChangedInsert (object)")
           tableView.insertRows(at: [newIndexPath!], with: .fade)
         case .delete:
-          print(">>> NSFetchedResultsChangeDelete (object")
+          print(">>> NSFetchedResultsChangeDelete (object)")
           tableView.deleteRows(at: [indexPath!], with: .fade)
         case .update:
           print(">>> NSFetchedResultsChangeUpdate (object")
