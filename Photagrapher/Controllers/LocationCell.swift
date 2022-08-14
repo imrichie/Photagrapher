@@ -11,6 +11,7 @@ class LocationCell: UITableViewCell {
   
   @IBOutlet var descriptionLabel: UILabel!
   @IBOutlet var addressLabel: UILabel!
+  @IBOutlet weak var favoriteImage: UIImageView!
   
   override func awakeFromNib() {
     super.awakeFromNib()
@@ -46,6 +47,12 @@ class LocationCell: UITableViewCell {
       addressLabel.text = text
     } else {
       addressLabel.text = String(format: "Lat: %.8f, Long: %.8f", location.latitude, location.longitude)
+    }
+    
+    if location.isFavorite {
+      favoriteImage.image = UIImage(systemName: "star.fill")
+    } else {
+      favoriteImage.isHidden = true 
     }
   }
 }

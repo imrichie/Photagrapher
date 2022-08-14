@@ -85,8 +85,15 @@ class LocationsViewController: UITableViewController {
     // Favorite Action
     let favoriteAction = UIContextualAction(style: .normal, title: "Favorite") { action, view, handler in
       print(">>> Favorite Button Clicked")
+      let cell = tableView.cellForRow(at: indexPath) as! LocationCell
       let selectedLocation = self.locationManager.resultsController.object(at: indexPath)
       selectedLocation.isFavorite.toggle()
+      if selectedLocation.isFavorite {
+        cell.favoriteImage.isHidden = false
+        cell.favoriteImage.image = UIImage(systemName: "star.fill")
+      } else {
+        cell.favoriteImage.isHidden = true
+      }
       
       do {
         try self.locationManager.managedObjectContext.save()
