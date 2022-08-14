@@ -115,6 +115,7 @@ class LocationsViewController: UITableViewController {
       if let selectedRow = tableView.indexPathForSelectedRow {
         controller.locationToEdit = locationManager.resultsController.object(at: selectedRow)
         controller.locationManager = locationManager
+        controller.title = "Edit Location"
       }
     }
   }
