@@ -425,7 +425,7 @@
         <scene sceneID="4au-a2-maA">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="a4k-ac-IhY" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Tag" image="location.north.circle" catalog="system" id="yGh-2R-gDj"/>
+                    <tabBarItem key="tabBarItem" title="Tag" image="tag" catalog="system" id="yGh-2R-gDj"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="wXe-Mg-fwS">
                         <rect key="frame" x="0.0" y="44" width="375" height="96"/>
@@ -503,8 +503,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="BMk-j1-8CE">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BMk-j1-8CE">
                                 <rect key="frame" x="0.0" y="88" width="375" height="641"/>
+                                <connections>
+                                    <outlet property="delegate" destination="paR-OS-Mzq" id="D8q-RG-mlP"/>
+                                </connections>
                             </mapView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="xr8-eZ-ebe"/>
@@ -528,6 +531,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="mapView" destination="BMk-j1-8CE" id="bog-5F-MSx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C0e-Qp-4BM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -537,7 +543,7 @@
         <scene sceneID="Ipg-f3-YsJ">
             <objects>
                 <navigationController id="k5g-Gd-6zM" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Locations" image="map" catalog="system" id="uAe-Qv-hmw"/>
+                    <tabBarItem key="tabBarItem" title="Locations" image="square.stack.3d.up" catalog="system" id="uAe-Qv-hmw"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="wdi-k9-M30">
                         <rect key="frame" x="0.0" y="44" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -554,7 +560,7 @@
         <scene sceneID="ZFt-eK-nGL">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fkL-xw-yL8" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Map" image="mappin.and.ellipse" catalog="system" id="fzh-OJ-odk"/>
+                    <tabBarItem key="tabBarItem" title="Map" image="map" catalog="system" id="fzh-OJ-odk"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="8Kq-wq-Ywd">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
@@ -574,9 +580,9 @@
         <segue reference="pfq-aS-0EW"/>
     </inferredMetricsTieBreakers>
     <resources>
-        <image name="location.north.circle" catalog="system" width="128" height="121"/>
         <image name="map" catalog="system" width="128" height="110"/>
-        <image name="mappin.and.ellipse" catalog="system" width="118" height="128"/>
+        <image name="square.stack.3d.up" catalog="system" width="128" height="124"/>
+        <image name="tag" catalog="system" width="128" height="119"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

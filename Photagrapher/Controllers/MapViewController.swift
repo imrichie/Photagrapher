@@ -17,6 +17,7 @@ class MapViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    updateLocations()
   }
   
   // MARK: - Bar Button Actions
@@ -29,6 +30,18 @@ class MapViewController: UIViewController {
     print(">>> Showing Locations...")
   }
   
+  // MARK: - Helper methods
+  func updateLocations() {
+    mapView.removeAnnotations(locationManager.locations)
+    let fetchRequest = NSFetchRequest<Location>(entityName: Constants.Entities.location)
+    
+    do {
+      locationManager.locations = try locationManager.managedObjectContext.fetch(fetchRequest)
+    } catch {
+      fatalError(">>> FETCHING ERROR: \(error.localizedDescription)")
+    }
+    mapView.addAnnotations(locationManager.locations)
+  }
 }
 
 extension MapViewController: MKMapViewDelegate {

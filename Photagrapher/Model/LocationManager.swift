@@ -10,6 +10,7 @@ import CoreData
 
 class LocationManager {
   var managedObjectContext: NSManagedObjectContext!
+  var locations = [Location]() 
   
   lazy var resultsController: NSFetchedResultsController<Location> = {
     let fetchRequest = NSFetchRequest<Location>(entityName: Constants.Entities.location)
