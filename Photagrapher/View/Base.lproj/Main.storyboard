@@ -503,17 +503,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HA1-xE-eRL">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="BMk-j1-8CE">
+                                <rect key="frame" x="0.0" y="88" width="375" height="641"/>
                             </mapView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="xr8-eZ-ebe"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="HA1-xE-eRL" secondAttribute="trailing" id="Y8r-g0-ndE"/>
-                            <constraint firstItem="HA1-xE-eRL" firstAttribute="leading" secondItem="Htv-DQ-aCv" secondAttribute="leading" id="ctD-Ff-Uyi"/>
-                            <constraint firstItem="HA1-xE-eRL" firstAttribute="top" secondItem="Htv-DQ-aCv" secondAttribute="top" id="kEP-ta-Wmt"/>
-                            <constraint firstAttribute="bottom" secondItem="HA1-xE-eRL" secondAttribute="bottom" id="l26-s3-EdQ"/>
+                            <constraint firstItem="BMk-j1-8CE" firstAttribute="leading" secondItem="xr8-eZ-ebe" secondAttribute="leading" id="S9u-dH-H3l"/>
+                            <constraint firstItem="BMk-j1-8CE" firstAttribute="top" secondItem="xr8-eZ-ebe" secondAttribute="top" id="abk-sS-kfJ"/>
+                            <constraint firstItem="BMk-j1-8CE" firstAttribute="bottom" secondItem="xr8-eZ-ebe" secondAttribute="bottom" id="pLL-D7-Rg8"/>
+                            <constraint firstItem="xr8-eZ-ebe" firstAttribute="trailing" secondItem="BMk-j1-8CE" secondAttribute="trailing" id="tVC-ku-ZRa"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Map" id="zvo-bN-lan">
@@ -528,9 +528,6 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <outlet property="mapView" destination="HA1-xE-eRL" id="LUQ-aY-lXd"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C0e-Qp-4BM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
