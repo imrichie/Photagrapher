@@ -81,11 +81,11 @@ class MapViewController: UIViewController {
   // MARK: - Navigation to LocationDetailViewController 
   @objc
   func showLocationDetails(_ sender: UIButton) {
-    performSegue(withIdentifier: "EditLocation", sender: sender)
+    performSegue(withIdentifier: Constants.SegueNames.editLocation, sender: sender)
   }
   
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    if segue.identifier == "EditLocation" {
+    if segue.identifier == Constants.SegueNames.editLocation {
       let controller = segue.destination as! LocationDetailViewController
       controller.locationManager = locationManager
       
@@ -100,15 +100,14 @@ extension MapViewController: MKMapViewDelegate {
   func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
     guard annotation is Location else { return nil }
     
-    let identifier = "Location"
+    let identifier = Constants.Annotations.identifier
     var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
     
     if annotationView == nil {
-      let pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+      let pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: Constants.Annotations.identifier)
       pinView.isEnabled = true
       pinView.canShowCallout = true
-      pinView.animatesDrop = false
-      pinView.pinTintColor = .systemBlue
+      pinView.animatesDrop = true
       
       let rightButton = UIButton(type: .detailDisclosure)
       rightButton.addTarget(self, action: #selector(showLocationDetails(_:)), for: .touchUpInside)

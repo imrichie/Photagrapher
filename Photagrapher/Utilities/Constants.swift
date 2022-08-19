@@ -26,4 +26,8 @@ struct Constants {
   struct SegueNames {
     static let editLocation: String = "EditLocation"
   }
+  
+  struct Annotations {
+    static let identifier: String = "Location"
+  }
 }
