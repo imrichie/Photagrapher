@@ -146,14 +146,18 @@ class LocationDetailViewController: UITableViewController {
   
   @IBAction func cancel() {
     navigationController?.popViewController(animated: true)
-  }
+  }  
   
   // MARK: - Table View Delegates
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     tableView.deselectRow(at: indexPath, animated: true)
     
+    // displays keyboard for the description text view
     if indexPath.section == 0 && indexPath.row == 0 {
       descriptionTextView.becomeFirstResponder()
+      // Image Picker
+    } else if indexPath.section == 1 && indexPath.row == 0 {
+      pickPhoto()
     }
   }
   
@@ -163,5 +167,58 @@ class LocationDetailViewController: UITableViewController {
     } else {
       return nil
     }
+  }
+  
+  // MARK: - Helper Functions
+  func takePhotoWithCamera() {
+    let imagePicker = UIImagePickerController()
+    imagePicker.sourceType = .camera
+    imagePicker.allowsEditing = true
+    imagePicker.delegate = self
+    present(imagePicker, animated: true, completion: nil)
+  }
+  
+  func pickPhoto() {
+    if true || UIImagePickerController.isSourceTypeAvailable(.camera) {
+      showPhotoMenu()
+    } else {
+      chooseFromLibrary()
+    }
+  }
+  
+  func chooseFromLibrary() {
+    let imagePicker = UIImagePickerController()
+    imagePicker.sourceType = .photoLibrary
+    imagePicker.allowsEditing = true
+    imagePicker.delegate = self
+    present(imagePicker, animated: true)
+  }
+  
+  func showPhotoMenu() {
+    let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+
+    let actionCancel = UIAlertAction(title: "Cancel", style: .cancel)
+    alert.addAction(actionCancel)
+    
+    // TODO: Add handler to call takePhotoWithCamera() when testing on real device
+    let actionPhoto = UIAlertAction(title: "Take Photo", style: .default)
+    alert.addAction(actionPhoto)
+    
+    let actionLibrary = UIAlertAction(title: "Choose from Library", style: .default) { _ in
+      self.chooseFromLibrary()
+    }
+    alert.addAction(actionLibrary)
+    
+    present(alert, animated: true)
+  }
+}
+
+extension LocationDetailViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+  func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+    dismiss(animated: true, completion: nil)
+  }
+  
+  func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+    dismiss(animated: true, completion: nil)
   }
 }

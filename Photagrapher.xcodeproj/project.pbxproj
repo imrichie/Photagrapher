@@ -371,7 +371,9 @@
 				DEVELOPMENT_TEAM = 45V9635UTT;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Photagrapher/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Use camera to capture current location";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This app keeps track of your favorite photography places. It needs access to your location";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Add photos to your locations";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -401,7 +403,9 @@
 				DEVELOPMENT_TEAM = 45V9635UTT;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Photagrapher/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Use camera to capture current location";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This app keeps track of your favorite photography places. It needs access to your location";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Add photos to your locations";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
