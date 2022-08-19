@@ -78,9 +78,21 @@ class MapViewController: UIViewController {
     return mapView.regionThatFits(region)
   }
   
+  // MARK: - Navigation to LocationDetailViewController 
   @objc
   func showLocationDetails(_ sender: UIButton) {
-    print(">>> Button")
+    performSegue(withIdentifier: "EditLocation", sender: sender)
+  }
+  
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if segue.identifier == "EditLocation" {
+      let controller = segue.destination as! LocationDetailViewController
+      controller.locationManager = locationManager
+      
+      let button = sender as! UIButton
+      let location = locationManager.locations[button.tag]
+      controller.locationToEdit = location
+    }
   }
 }
 

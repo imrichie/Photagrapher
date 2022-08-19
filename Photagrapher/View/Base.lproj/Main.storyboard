@@ -533,6 +533,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="BMk-j1-8CE" id="bog-5F-MSx"/>
+                        <segue destination="mwP-YY-EuZ" kind="show" identifier="EditLocation" id="nCJ-D7-Swt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C0e-Qp-4BM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
