@@ -9,6 +9,7 @@
 import UIKit
 import CoreLocation
 import CoreData
+import PhotosUI
 
 // MARK: - Lazy Objects
 private let dateFormatter: DateFormatter = {
@@ -19,20 +20,25 @@ private let dateFormatter: DateFormatter = {
 }()
 
 class LocationDetailViewController: UITableViewController {
+  // Outlets
+  @IBOutlet var descriptionTextView:  UITextView!
+  @IBOutlet var categoryLabel:        UILabel!
   
-  @IBOutlet var descriptionTextView: UITextView!
-  @IBOutlet var categoryLabel: UILabel!
-  @IBOutlet var latitudeLabel: UILabel!
-  @IBOutlet var longitutudeLabel: UILabel!
-  @IBOutlet var addressLabel: UILabel!
-  @IBOutlet var dateLabel: UILabel!
+  @IBOutlet var addPhotoLabel:        UILabel!
+  @IBOutlet var imageView:            UIImageView!
   
+  @IBOutlet var latitudeLabel:        UILabel!
+  @IBOutlet var longitutudeLabel:     UILabel!
+  @IBOutlet var addressLabel:         UILabel!
+  @IBOutlet var dateLabel:            UILabel!
   
+  // Data for controls
+  var descriptionText: String = ""
+  var categoryName: String = "No Category"
+  var image: UIImage?
   var coordinates = CLLocationCoordinate2D(latitude: 0, longitude: 0)
   var placemark: CLPlacemark?
-  var categoryName: String = "No Category"
   var date: Date = Date()
-  var descriptionText: String = ""
   
   // Core Data
   var locationManager: LocationManager!
@@ -68,6 +74,13 @@ class LocationDetailViewController: UITableViewController {
   }
   
   // MARK: - Private Methods
+  
+  func show(image: UIImage) {
+    imageView.image = image
+    imageView.isHidden = false
+    addPhotoLabel.text = ""
+  }
+  
   func formatAddress(from: CLPlacemark) -> String {
     var text = ""
     if let temp = placemark?.subThoroughfare {
@@ -146,7 +159,7 @@ class LocationDetailViewController: UITableViewController {
   
   @IBAction func cancel() {
     navigationController?.popViewController(animated: true)
-  }  
+  }
   
   // MARK: - Table View Delegates
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -187,16 +200,25 @@ class LocationDetailViewController: UITableViewController {
   }
   
   func chooseFromLibrary() {
-    let imagePicker = UIImagePickerController()
-    imagePicker.sourceType = .photoLibrary
-    imagePicker.allowsEditing = true
-    imagePicker.delegate = self
-    present(imagePicker, animated: true)
+    var photoConfig = PHPickerConfiguration()
+    photoConfig.filter = .images
+    photoConfig.selectionLimit = 1
+    
+    let newImagePicker = PHPickerViewController(configuration: photoConfig)
+    newImagePicker.delegate = self
+    present(newImagePicker, animated: true)
+    
+    // Depracated
+//    let imagePicker = UIImagePickerController()
+//    imagePicker.sourceType = .photoLibrary
+//    imagePicker.allowsEditing = true
+//    imagePicker.delegate = self
+//    present(imagePicker, animated: true)
   }
   
   func showPhotoMenu() {
     let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-
+    
     let actionCancel = UIAlertAction(title: "Cancel", style: .cancel)
     alert.addAction(actionCancel)
     
@@ -213,8 +235,19 @@ class LocationDetailViewController: UITableViewController {
   }
 }
 
+extension LocationDetailViewController: PHPickerViewControllerDelegate {
+  func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+    print(">>> Image Picked!")
+    dismiss(animated: true)
+  }
+}
+
 extension LocationDetailViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
   func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+    image = info[.editedImage] as? UIImage
+    if let theImage = image {
+      show(image: theImage)
+    }
     dismiss(animated: true, completion: nil)
   }
   
