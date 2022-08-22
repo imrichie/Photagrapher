@@ -9,7 +9,6 @@
 import UIKit
 import CoreLocation
 import CoreData
-import PhotosUI
 
 // MARK: - Lazy Objects
 private let dateFormatter: DateFormatter = {
@@ -200,20 +199,11 @@ class LocationDetailViewController: UITableViewController {
   }
   
   func chooseFromLibrary() {
-    var photoConfig = PHPickerConfiguration()
-    photoConfig.filter = .images
-    photoConfig.selectionLimit = 1
-    
-    let newImagePicker = PHPickerViewController(configuration: photoConfig)
-    newImagePicker.delegate = self
-    present(newImagePicker, animated: true)
-    
-    // Depracated
-//    let imagePicker = UIImagePickerController()
-//    imagePicker.sourceType = .photoLibrary
-//    imagePicker.allowsEditing = true
-//    imagePicker.delegate = self
-//    present(imagePicker, animated: true)
+    let imagePicker = UIImagePickerController()
+    imagePicker.sourceType = .photoLibrary
+    imagePicker.allowsEditing = true
+    imagePicker.delegate = self
+    present(imagePicker, animated: true)
   }
   
   func showPhotoMenu() {
@@ -232,13 +222,6 @@ class LocationDetailViewController: UITableViewController {
     alert.addAction(actionLibrary)
     
     present(alert, animated: true)
-  }
-}
-
-extension LocationDetailViewController: PHPickerViewControllerDelegate {
-  func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
-    print(">>> Image Picked!")
-    dismiss(animated: true)
   }
 }
 
