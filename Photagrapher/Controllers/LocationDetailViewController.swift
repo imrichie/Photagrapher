@@ -32,15 +32,15 @@ class LocationDetailViewController: UITableViewController {
   @IBOutlet var dateLabel:            UILabel!
   
   // Data for controls
-  var descriptionText: String = ""
-  var categoryName: String = "No Category"
-  var image: UIImage?
-  var coordinates = CLLocationCoordinate2D(latitude: 0, longitude: 0)
-  var placemark: CLPlacemark?
-  var date: Date = Date()
+  var descriptionText:  String = ""
+  var categoryName:     String = "No Category"
+  var image:            UIImage?
+  var coordinates =     CLLocationCoordinate2D(latitude: 0, longitude: 0)
+  var placemark:        CLPlacemark?
+  var date:             Date = Date()
   
   // Core Data
-  var locationManager: LocationManager!
+  var locationManager:  LocationManager!
   
   // property observer
   var locationToEdit: Location? {
@@ -72,7 +72,7 @@ class LocationDetailViewController: UITableViewController {
     dateLabel.text = format(date: date)
   }
   
-  // MARK: - Private Methods
+  // `MARK: - Private Methods`
   
   func show(image: UIImage) {
     imageView.image = image
@@ -228,8 +228,8 @@ class LocationDetailViewController: UITableViewController {
 extension LocationDetailViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
   func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
     image = info[.editedImage] as? UIImage
-    if let theImage = image {
-      show(image: theImage)
+    if let userSelectedImage = image {
+      show(image: userSelectedImage)
     }
     dismiss(animated: true, completion: nil)
   }
